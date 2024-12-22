@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Layout</title>
+  <style>
+    /* General Styles */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #111;
+      color: #fff;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #000;
+      border-bottom: 1px solid #333;
+    }
+
+    .navbar .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #A6E3A1;
+    }
+
+    .navbar .menu-icon,
+    .navbar .search-icon {
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Section Title */
+    .section-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin: 20px;
+    }
+
+    /* Scrollable Row */
+    .product-row {
+      display: flex;
+      overflow-x: auto;
+      gap: 20px;
+      padding: 10px 20px;
+      scroll-behavior: smooth;
+    }
+
+    .product-row::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .product-row::-webkit-scrollbar-thumb {
+      background: #444;
+      border-radius: 10px;
+    }
+
+    .product-card {
+      min-width: 200px;
+      background: #222;
+      border-radius: 8px;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .product-card img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .product-card h4 {
+      margin: 10px 0 5px;
+      font-size: 0.9rem;
+    }
+
+    .product-card p {
+      font-size: 0.8rem;
+      color: #aaa;
+    }
+
+    .product-card .price {
+      margin-top: 5px;
+      font-weight: bold;
+      color: #A6E3A1;
+    }
+
+    .product-card .badge {
+      background: #4CAF50;
+      color: #fff;
+      padding: 2px 6px;
+      font-size: 0.7rem;
+      border-radius: 4px;
+      margin-top: 5px;
+      display: inline-block;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 20px;
+      background: #000;
+      margin-top: 20px;
+      font-size: 0.9rem;
+    }
+
+    .footer a {
+      color: #A6E3A1;
+      text-decoration: none;
+    }
+
+    /* Scroll Buttons */
+    .scroll-btns {
+      display: flex;
+      justify-content: space-between;
+      margin: 10px 20px;
+    }
+
+    .scroll-btns button {
+      background: #4CAF50;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .scroll-btns button:hover {
+      background: #388E3C;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="menu-icon">☰</div>
+    <div class="logo">StockX</div>
+    <div class="search-icon">🔍</div>
+  </div>
+
+  <!-- Recommended Section -->
+  <div class="section-title">Recommended For You</div>
+  <div class="scroll-btns">
+    <button onclick="scrollRow('recommended', -200)">←</button>
+    <button onclick="scrollRow('recommended', 200)">→</button>
+  </div>
+  <div class="product-row" id="recommended">
+    <div class="product-card">
+      <img src="https://via.placeholder.com/200x150" alt="Product">
+      <h4>Fear of God Essentials</h4>
+      <p>Lowest Ask</p>
+      <div class="price">$51</div>
+      <div class="badge">Xpress Ship</div>
+    </div>
+    <!-- Repeat for 6+ items -->
+    <div class="product-card">
+      <img src="https://via.placeholder.com/200x150" alt="Product">
+      <h4>Jordan 1 Retro</h4>
+      <p>Lowest Ask</p>
+      <div class="price">$412</div>
+      <div class="badge">Xpress Ship</div>
+    </div>
+    <div class="product-card">
+      <img src="https://via.placeholder.com/200x150" alt="Product">
+      <h4>Jordan 4 Black</h4>
+      <p>Lowest Ask</p>
+      <div class="price">$254</div>
+      <div class="badge">Xpress Ship</div>
+    </div>
+    <!-- Add more items as needed -->
+  </div>
+
+  <!-- New and Noteworthy Section -->
+  <div class="section-title">New and Noteworthy</div>
+  <div class="scroll-btns">
+    <button onclick="scrollRow('noteworthy', -200)">←</button>
+    <button onclick="scrollRow('noteworthy', 200)">→</button>
+  </div>
+  <div class="product-row" id="noteworthy">
+    <div class="product-card">
+      <img src="https://via.placeholder.com/200x150" alt="Product">
+      <h4>KAWS Young-Hee</h4>
+      <p>Lowest Ask</p>
+      <div class="price">$1,111</div>
+      <div class="badge">Last Sale: $824</div>
+    </div>
+    <div class="product-card">
+      <img src="https://via.placeholder.com/200x150" alt="Product">
+      <h4>Jordan 4 RM Green</h4>
+      <p>Lowest Ask</p>
+      <div class="price">$136</div>
+      <div class="badge">Last Sale: $140</div>
+    </div>
+    <!-- Add more items as needed -->
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p>Explore More <a href="#">See All</a></p>
+  </div>
+
+  <script>
+    function scrollRow(rowId, distance) {
+      const row = document.getElementById(rowId);
+      row.scrollBy({
+        left: distance,
+        behavior: 'smooth'
+      });
+    }
+  </script>
+</body>
+</html>
